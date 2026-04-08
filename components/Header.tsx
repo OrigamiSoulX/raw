@@ -1,10 +1,36 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function Header() {
+interface HeaderProps {
+  onSearch?: (query: string) => void;
+}
+
+export default function Header({ onSearch }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchParams.get('q') || '');
+
+  const handleSearch = (val: string) => {
+    setSearchValue(val);
+    if (onSearch) {
+      onSearch(val);
+    } else {
+      // If we are on a page that doesn't handle search locally (like Watch),
+      // we redirect to home with the query
+      if (val.trim()) {
+        router.push(`/?q=${encodeURIComponent(val)}`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearchValue(q);
+  }, [searchParams]);
 
   return (
     <header className="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-black/80 backdrop-blur-xl shadow-[0_0_20px_rgba(255,0,255,0.1)]">
@@ -16,8 +42,10 @@ export default function Header() {
         <div className="relative group hidden md:block">
           <input
             type="text"
-            placeholder="Search parameters..."
-            className="bg-surface-container-low border-b-2 border-outline-variant focus:border-primary px-4 py-2 outline-none text-sm w-64 transition-all duration-300 text-white"
+            placeholder="Search transmissions..."
+            value={searchValue}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="bg-surface-container-low border-b-2 border-outline-variant focus:border-primary px-4 py-2 outline-none text-sm w-64 transition-all duration-300 text-white placeholder-zinc-600"
           />
           <span className="material-symbols-outlined absolute right-2 top-2 text-zinc-500">search</span>
         </div>
