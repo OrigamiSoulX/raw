@@ -1,0 +1,4 @@
+Contact: security@raw-cinema.com
+Expires: 2026-01-01T00:00:00.000Z
+Preferred-Languages: it, en
+Policy: https://raw-cinema.com/manifesto
