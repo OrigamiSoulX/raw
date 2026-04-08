@@ -14,20 +14,20 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = "rounded-full font-black tracking-widest uppercase transition-all duration-300 active:scale-95 text-center flex items-center justify-center";
+  const baseStyles = "rounded-full font-bold transition-all duration-300 active:scale-95 text-center flex items-center justify-center whitespace-nowrap";
 
   const variants = {
-    primary: "bg-primary text-on-primary shadow-[0_0_20px_rgba(255,124,245,0.3)] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,124,245,0.5)]",
-    secondary: "bg-gradient-to-br from-primary to-secondary text-on-primary shadow-[0_0_20px_rgba(255,124,245,0.3)] hover:scale-105",
-    outline: "border border-primary/20 text-primary hover:bg-primary/5",
-    ghost: "text-zinc-500 hover:text-white transition-colors"
+    primary: "bg-primary text-black hover:opacity-90 shadow-lg shadow-primary/10",
+    secondary: "bg-surface-high text-white hover:bg-surface-highest border border-white/5",
+    outline: "border border-white/20 text-white hover:bg-white/5",
+    ghost: "text-zinc-400 hover:text-white transition-colors"
   };
 
   const sizes = {
-    sm: "px-6 py-2 text-[10px]",
-    md: "px-8 py-3 text-xs",
-    lg: "px-10 py-4 text-sm",
-    xl: "px-12 py-6 text-lg"
+    sm: "px-4 py-2 text-xs",
+    md: "px-6 py-3 text-sm",
+    lg: "px-8 py-4 text-base",
+    xl: "px-10 py-5 text-lg"
   };
 
   const widthStyles = fullWidth ? "w-full" : "";

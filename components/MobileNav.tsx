@@ -2,21 +2,22 @@ import Link from 'next/link';
 
 export default function MobileNav() {
   return (
-    <nav className="md:hidden fixed bottom-0 w-full h-16 bg-black/90 backdrop-blur-md flex justify-around items-center z-50 border-t border-zinc-800">
-      <Link href="/" className="text-zinc-500 hover:text-white transition-colors">
-        <span className="material-symbols-outlined">home_max</span>
+    <nav className="md:hidden fixed bottom-0 w-full h-16 glass z-50 flex justify-around items-center px-4">
+      <Link href="/" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-white transition-colors">
+        <span className="material-symbols-outlined text-[22px]">home</span>
+        <span className="text-[9px] font-bold uppercase tracking-widest">Home</span>
       </Link>
-      <Link href="/categories" className="text-zinc-500 hover:text-white transition-colors">
-        <span className="material-symbols-outlined">school</span>
+      <Link href="/categories" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-white transition-colors">
+        <span className="material-symbols-outlined text-[22px]">grid_view</span>
+        <span className="text-[9px] font-bold uppercase tracking-widest">Explore</span>
       </Link>
-      <Link href="/watch/featured" className="text-zinc-500 hover:text-white transition-colors">
-        <span className="material-symbols-outlined">movie_filter</span>
+      <Link href="/community" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-white transition-colors">
+        <span className="material-symbols-outlined text-[22px]">groups</span>
+        <span className="text-[9px] font-bold uppercase tracking-widest">Social</span>
       </Link>
-      <Link href="/community" className="text-zinc-500 hover:text-white transition-colors">
-        <span className="material-symbols-outlined">groups</span>
-      </Link>
-      <Link href="/profile" className="text-pink-500 shadow-[0_0_10px_rgba(255,124,245,0.5)]">
-        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>account_circle</span>
+      <Link href="/profile" className="flex flex-col items-center gap-1 text-primary">
+        <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>account_circle</span>
+        <span className="text-[9px] font-bold uppercase tracking-widest">Vault</span>
       </Link>
     </nav>
   );

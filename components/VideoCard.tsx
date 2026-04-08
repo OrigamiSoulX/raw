@@ -6,7 +6,7 @@ interface VideoCardProps {
   title: string;
   subtitle?: string;
   imageUrl: string;
-  type?: 'series' | 'dialogue' | 'studio' | 'ritual' | 'masterclass' | 'notes';
+  type?: string;
   episodes?: string;
   duration?: string;
   rating?: string;
@@ -26,22 +26,30 @@ export default function VideoCard({
 }: VideoCardProps) {
 
   const layoutStyles = {
-    standard: "aspect-[4/3]",
-    vertical: "md:row-span-2 aspect-[4/5]",
-    wide: "md:col-span-2 aspect-video",
-    horizontal: "flex gap-4 items-start"
+    standard: "aspect-video",
+    vertical: "aspect-[9/16]",
+    wide: "md:col-span-2 aspect-[21/9]",
+    horizontal: "flex gap-4 items-start w-full"
   };
 
   if (layout === 'horizontal') {
     return (
-      <Link href={`/watch/${id}`} className="group flex gap-4 items-start">
-        <div className="w-32 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-900 border border-white/10 relative">
-          <Image fill src={imageUrl} alt={title} className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+      <Link href={`/watch/${id}`} className="group flex gap-4 items-start w-full transition-colors hover:bg-white/5 p-2 rounded-xl">
+        <div className="w-40 aspect-video flex-shrink-0 rounded-lg overflow-hidden relative">
+          <Image fill src={imageUrl} alt={title} className="object-cover group-hover:scale-105 transition-transform duration-500" />
+          {duration && (
+            <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-bold text-white">
+              {duration}
+            </div>
+          )}
         </div>
-        <div className="space-y-1">
-          <div className="text-[10px] font-black text-primary tracking-widest uppercase">{type}</div>
-          <h4 className="text-sm font-bold leading-snug group-hover:text-primary transition-colors text-white">{title}</h4>
-          <div className="text-[10px] text-zinc-500 uppercase">{duration} • {rating} RATING</div>
+        <div className="flex-1 min-w-0">
+          <h4 className="text-sm font-bold text-white line-clamp-2 leading-tight mb-1">{title}</h4>
+          <div className="text-[11px] text-on-surface-variant flex items-center gap-2">
+             <span className="uppercase tracking-wider">{type}</span>
+             {rating && <span>•</span>}
+             {rating && <span className={rating === 'LOCKED' ? 'text-primary font-black' : ''}>{rating}</span>}
+          </div>
         </div>
       </Link>
     );
@@ -50,28 +58,31 @@ export default function VideoCard({
   return (
     <Link
       href={`/watch/${id}`}
-      className={`group relative overflow-hidden rounded-xl bg-surface-container shadow-2xl transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,124,245,0.3)] ${layoutStyles[layout]}`}
+      className={`group flex flex-col gap-3 ${layout === 'wide' ? 'md:col-span-2' : ''}`}
     >
-      <Image
-        fill
-        src={imageUrl}
-        alt={title}
-        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+      <div className={`relative overflow-hidden rounded-xl bg-surface-high ${layoutStyles[layout === 'wide' ? 'wide' : layout === 'vertical' ? 'vertical' : 'standard']}`}>
+        <Image
+          fill
+          src={imageUrl}
+          alt={title}
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
 
-      <div className="absolute bottom-0 p-6 w-full space-y-2">
-        <span className="text-xs font-black tracking-widest text-primary uppercase">
-          {type} {episodes ? `/ ${episodes}` : ''}
-        </span>
-        <h3 className={`${layout === 'vertical' ? 'text-3xl' : 'text-xl'} font-bold leading-tight text-white`}>
+        {episodes && (
+          <div className="absolute top-2 right-2 glass px-2 py-1 rounded text-[10px] font-black text-white uppercase tracking-tighter">
+            {episodes}
+          </div>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-1 pr-2">
+        <h3 className="text-sm md:text-base font-bold text-white line-clamp-2 leading-tight transition-colors group-hover:text-primary">
           {title}
         </h3>
-        {subtitle && (
-          <p className="text-on-surface-variant text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {subtitle}
-          </p>
-        )}
+        <p className="text-xs text-on-surface-variant uppercase tracking-widest font-medium">
+          {type} {subtitle && `• ${subtitle}`}
+        </p>
       </div>
     </Link>
   );

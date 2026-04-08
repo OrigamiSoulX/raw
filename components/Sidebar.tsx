@@ -1,51 +1,69 @@
 import Link from 'next/link';
 
 export default function Sidebar() {
+  const sections = [
+    {
+      items: [
+        { label: 'Home', href: '/', icon: 'home' },
+        { label: 'Trending', href: '/categories', icon: 'local_fire_department' },
+        { label: 'Library', href: '/profile', icon: 'video_library' },
+      ]
+    },
+    {
+      title: 'Ethical Cinema',
+      items: [
+        { label: 'Manifesto', href: '/manifesto', icon: 'auto_awesome' },
+        { label: 'Categories', href: '/categories', icon: 'grid_view' },
+        { label: 'Community', href: '/community', icon: 'groups' },
+      ]
+    },
+    {
+      title: 'Creator',
+      items: [
+        { label: 'Dashboard', href: '/studio', icon: 'dashboard' },
+        { label: 'Settings', href: '/settings/privacy', icon: 'settings' },
+      ]
+    }
+  ];
+
   return (
-    <aside className="fixed left-0 top-0 h-full flex flex-col py-10 gap-8 bg-zinc-950 shadow-[10px_0_30px_rgba(0,0,0,0.5)] w-64 rounded-r-[3rem] z-40 hidden xl:flex mt-20">
-      <div className="px-8 mb-4">
-        <h2 className="font-bold text-sm uppercase tracking-widest text-pink-500">RAW Premium</h2>
-        <p className="text-zinc-500 text-[10px] tracking-tighter uppercase">The Electric Pulse</p>
+    <aside className="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-white/5 bg-background hidden lg:flex flex-col py-6 px-4 z-40 overflow-y-auto no-scrollbar">
+      <div className="flex-1 space-y-8">
+        {sections.map((section, idx) => (
+          <div key={idx} className="space-y-2">
+            {section.title && (
+              <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant/60 mb-3">
+                {section.title}
+              </h3>
+            )}
+            <div className="space-y-1">
+              {section.items.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center gap-4 px-4 py-2.5 rounded-xl text-sm font-medium text-on-surface-variant hover:text-white hover:bg-surface-high transition-all group"
+                >
+                  <span className="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </span>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <nav className="flex flex-col gap-1">
-        <Link href="/" className="flex items-center gap-4 text-zinc-600 px-6 py-4 hover:bg-zinc-900 hover:text-white transition-all group">
-          <span className="material-symbols-outlined">home_max</span>
-          <span className="font-bold text-sm uppercase tracking-widest">Home</span>
-        </Link>
-        <Link href="/categories" className="flex items-center gap-4 text-zinc-600 px-6 py-4 hover:bg-zinc-900 hover:text-white transition-all group">
-          <span className="material-symbols-outlined">local_fire_department</span>
-          <span className="font-bold text-sm uppercase tracking-widest">Trending</span>
-        </Link>
-        <Link href="/watch/featured" className="flex items-center gap-4 text-zinc-600 px-6 py-4 hover:bg-zinc-900 hover:text-white transition-all group">
-          <span className="material-symbols-outlined">movie_filter</span>
-          <span className="font-bold text-sm uppercase tracking-widest">Series</span>
-        </Link>
-
-        <div className="my-4 border-t border-white/5 mx-6"></div>
-
-        <Link href="/profile" className="flex items-center gap-4 text-zinc-600 px-6 py-4 hover:bg-zinc-900 hover:text-white transition-all group">
-          <span className="material-symbols-outlined">history</span>
-          <span className="font-bold text-sm uppercase tracking-widest">History</span>
-        </Link>
-        <Link href="/profile" className="flex items-center gap-4 text-zinc-600 px-6 py-4 hover:bg-zinc-900 hover:text-white transition-all group">
-          <span className="material-symbols-outlined">video_library</span>
-          <span className="font-bold text-sm uppercase tracking-widest">Library</span>
-        </Link>
-
-        <div className="my-4 border-t border-white/5 mx-6"></div>
-
-        <Link href="/studio" className="flex items-center gap-4 text-pink-500 font-black drop-shadow-[0_0_8px_rgba(255,0,255,0.8)] border-r-4 border-pink-500 px-6 py-4 bg-zinc-900/50">
-          <span className="material-symbols-outlined">verified_user</span>
-          <span className="font-bold text-sm uppercase tracking-widest">Ethical Studio</span>
-        </Link>
-      </nav>
-
-      <div className="mt-auto px-6">
-        <Link href="/studio">
-          <button className="w-full py-4 rounded-full bg-gradient-to-br from-primary to-secondary text-on-primary font-black tracking-widest text-xs shadow-[0_0_20px_rgba(255,124,245,0.3)] hover:scale-105 transition-transform uppercase">
-            GO PRO
-          </button>
+      <div className="mt-8 px-4">
+        <Link href="/studio" className="block p-4 rounded-2xl premium-gradient relative overflow-hidden group">
+           <div className="relative z-10">
+              <p className="text-black font-black text-xs uppercase tracking-widest mb-1">RAW Premium</p>
+              <p className="text-black/70 text-[10px] font-bold uppercase leading-tight mb-3">Unlock the Vault</p>
+              <button className="bg-black text-white text-[10px] font-black px-4 py-2 rounded-full uppercase transition-transform group-hover:scale-105">
+                Go Pro
+              </button>
+           </div>
+           <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/20 blur-2xl rounded-full transition-transform group-hover:scale-150" />
         </Link>
       </div>
     </aside>
