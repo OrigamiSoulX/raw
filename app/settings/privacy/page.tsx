@@ -8,7 +8,7 @@ export default function PrivacySettings() {
       <Header />
       <div className="flex pt-20">
         <Sidebar />
-        <main className="flex-1 md:ml-64 px-6 md:px-20 py-12">
+        <main className="flex-1 lg:ml-64 px-6 md:px-20 py-12 pb-32">
           <header className="mb-16">
             <span className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4 block">System / Core</span>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-tight text-white mb-6">
@@ -67,6 +67,42 @@ export default function PrivacySettings() {
               <button className="w-full py-4 border-2 border-primary text-primary font-black rounded-full hover:bg-primary hover:text-black transition-all text-xs tracking-widest uppercase">
                 View Ethical Charter
               </button>
+            </section>
+
+            {/* Notifications */}
+            <section className="lg:col-span-5 bg-surface-container rounded-xl p-10 border border-outline-variant/10">
+              <h3 className="text-xl font-bold mb-8 text-white">Neon Notifications</h3>
+              <div className="space-y-6">
+                {[
+                  { label: 'New Series Drops', active: true },
+                  { label: 'Security Alerts', active: true },
+                  { label: 'Marketing Pulse', active: false },
+                ].map((item, idx) => (
+                  <div key={idx} className={`flex items-center justify-between ${!item.active && 'opacity-50'}`}>
+                    <span className="text-sm font-medium text-white">{item.label}</span>
+                    <div className={`w-12 h-6 rounded-full flex items-center px-1 ${item.active ? 'bg-primary/20' : 'bg-zinc-800'}`}>
+                      <div className={`w-4 h-4 rounded-full ${item.active ? 'bg-primary shadow-[0_0_8px_#FF7CF5]' : 'bg-zinc-600'}`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Data Rights */}
+            <section className="lg:col-span-7 bg-surface-container rounded-xl p-10 border border-outline-variant/10 flex flex-col md:flex-row gap-8 items-center">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-4 text-white">Your Data Rights</h3>
+                <p className="text-sm text-on-surface-variant mb-6">
+                  Download your entire interaction history or purge your existence from our nodes with a single click. We store zero persistent identifiers.
+                </p>
+                <div className="flex gap-4">
+                  <button className="px-6 py-2 bg-surface-container-highest rounded-full text-[10px] font-black uppercase text-white hover:bg-zinc-800 transition-colors">Export Data</button>
+                  <button className="px-6 py-2 bg-red-900/20 text-red-500 rounded-full text-[10px] font-black uppercase hover:bg-red-900/40 transition-colors">Purge Account</button>
+                </div>
+              </div>
+              <div className="w-32 h-32 rounded-xl bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center border border-primary/30">
+                <span className="material-symbols-outlined text-primary text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>shuffle</span>
+              </div>
             </section>
           </div>
         </main>

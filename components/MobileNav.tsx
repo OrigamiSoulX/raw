@@ -12,8 +12,11 @@ export default function MobileNav() {
       <Link href="/watch/featured" className="text-zinc-500 hover:text-white transition-colors">
         <span className="material-symbols-outlined">movie_filter</span>
       </Link>
-      <Link href="/studio" className="text-pink-500 shadow-[0_0_10px_rgba(255,124,245,0.5)]">
-        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
+      <Link href="/community" className="text-zinc-500 hover:text-white transition-colors">
+        <span className="material-symbols-outlined">groups</span>
+      </Link>
+      <Link href="/profile" className="text-pink-500 shadow-[0_0_10px_rgba(255,124,245,0.5)]">
+        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>account_circle</span>
       </Link>
     </nav>
   );

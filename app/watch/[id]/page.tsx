@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import MobileNav from '@/components/MobileNav';
 import Button from '@/components/Button';
+import VideoCard from '@/components/VideoCard';
 import Image from 'next/image';
 import { use } from 'react';
 
@@ -102,22 +103,25 @@ export default function VideoPlayer({ params }: { params: Promise<{ id: string }
         <aside className="lg:col-span-4 space-y-10">
           <div className="glass-panel p-8 rounded-xl border border-white/5 space-y-8 sticky top-28">
             <h3 className="text-xl font-black tracking-tighter uppercase text-white mb-6">Next in Series</h3>
-            <div className="space-y-6">
-              {[
-                { title: 'The Sensory Map: Navigating Physical Response', part: 'Part 02', time: '38 MIN', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKyv0xemXCV69VVbMNGG5Lu23vJd1N_k0k2JVSVgbnUbiPHveuEh3BS3SPsVI53WLaYftA24UzksQwLhL6vcMlJRQnqZn-9VR-B4EKkzHPQxtyNb1okFGoJ_VJg7HpkThkkHG6emca30L1IiSCal2q_Le0RHLm5Y-JqHUHw5wQZ9iL7Uq6Rv9VVT_ALrYTHfHQ_WsfX-EAwdjH4gYhbj0DUVko7mUUhpYD2DXjEInfTlM-I-NTCOe1DAwp0cPEI9s4DJKPwrnFhrE' },
-                { title: 'Communicative Flow: Beyond Verbality', part: 'Part 03', time: '42 MIN', locked: true, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-VMl5xKBE1Tm0Vsw610mJaegE4840F1SQThvs2fciyjQQdIE6zXszcktghuEhgw0ZjsGX1SXBZt-cQ_vvOxhzDMrYgIVd_h5viH1sLzq_M_Gc7tv3eGQZQh0-wmG6OS-G5s4ia4jQ4ow0HOleOG_Sge7HCwGJ3fFKOPsP95hsjlVzoqCz4NHccgB4GszG9YhNs6btDVXPoJMrnxeR6rmbOjq6kAbxajje5jjIkR1AYb1uSfIERnBOfRnF79nZpbH7tcDIFTNMM3g' },
-              ].map((video, idx) => (
-                <div key={idx} className="group flex gap-4 items-start cursor-pointer">
-                  <div className="w-32 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-900 relative">
-                    <Image fill src={video.image} alt={video.title} className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-                  </div>
-                  <div>
-                    <div className={`text-[10px] font-black tracking-widest uppercase ${video.locked ? 'text-zinc-600' : 'text-primary'}`}>{video.part}</div>
-                    <h4 className="text-sm font-bold leading-snug group-hover:text-primary transition-colors text-white">{video.title}</h4>
-                    <div className="text-[10px] text-zinc-500">{video.time} {video.locked ? '• LOCKED' : ''}</div>
-                  </div>
-                </div>
-              ))}
+            <div className="flex flex-col gap-6">
+              <VideoCard
+                id="sensory-map"
+                title="The Sensory Map: Navigating Physical Response"
+                imageUrl="https://lh3.googleusercontent.com/aida-public/AB6AXuBKyv0xemXCV69VVbMNGG5Lu23vJd1N_k0k2JVSVgbnUbiPHveuEh3BS3SPsVI53WLaYftA24UzksQwLhL6vcMlJRQnqZn-9VR-B4EKkzHPQxtyNb1okFGoJ_VJg7HpkThkkHG6emca30L1IiSCal2q_Le0RHLm5Y-JqHUHw5wQZ9iL7Uq6Rv9VVT_ALrYTHfHQ_WsfX-EAwdjH4gYhbj0DUVko7mUUhpYD2DXjEInfTlM-I-NTCOe1DAwp0cPEI9s4DJKPwrnFhrE"
+                type="series"
+                duration="38 MIN"
+                rating="4.9"
+                layout="horizontal"
+              />
+              <VideoCard
+                id="communicative-flow"
+                title="Communicative Flow: Beyond Verbality"
+                imageUrl="https://lh3.googleusercontent.com/aida-public/AB6AXuB-VMl5xKBE1Tm0Vsw610mJaegE4840F1SQThvs2fciyjQQdIE6zXszcktghuEhgw0ZjsGX1SXBZt-cQ_vvOxhzDMrYgIVd_h5viH1sLzq_M_Gc7tv3eGQZQh0-wmG6OS-G5s4ia4jQ4ow0HOleOG_Sge7HCwGJ3fFKOPsP95hsjlVzoqCz4NHccgB4GszG9YhNs6btDVXPoJMrnxeR6rmbOjq6kAbxajje5jjIkR1AYb1uSfIERnBOfRnF79nZpbH7tcDIFTNMM3g"
+                type="series"
+                duration="42 MIN"
+                rating="LOCKED"
+                layout="horizontal"
+              />
             </div>
 
             <div className="pt-8 border-t border-white/5">

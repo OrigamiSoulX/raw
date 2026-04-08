@@ -9,7 +9,8 @@ export default function CommunityHub() {
       <Header />
       <div className="flex pt-20">
         <Sidebar />
-        <main className="lg:ml-64 flex-1 pt-8 px-6 md:px-12 pb-20">
+        <main className="lg:ml-64 flex-1 pt-8 px-6 md:px-12 pb-32">
+          {/* Header */}
           <section className="mb-16">
             <div className="relative overflow-hidden rounded-xl h-[400px] flex items-end p-12 bg-surface-container shadow-[0_0_40px_rgba(0,0,0,0.8)]">
               <Image
@@ -60,6 +61,36 @@ export default function CommunityHub() {
                     <h4 className="text-lg font-bold text-white">{group.title}</h4>
                     <p className="text-xs text-zinc-500 mt-1 uppercase tracking-widest">{group.souls} active souls</p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Dialogue Feed */}
+          <section className="space-y-8">
+            <h2 className="text-3xl font-black uppercase italic tracking-tighter text-white mb-8 border-b-4 border-primary inline-block">Underground Dialogue</h2>
+
+            <div className="grid grid-cols-1 gap-6">
+              {[
+                { user: '@Velvet_Void', time: 'NOW', content: "Just finished the 'Sensory Landscapes' module. The way it explores the connection between texture and psychological comfort is honestly life-changing. Anyone else feel this way?", expert: false },
+                { user: 'Dr. Aris Thorne', time: '2H AGO', content: "@Velvet_Void, that connection is rooted in somatic grounding. When we engage with specific textures, we're essentially bypassing the critical mind to speak directly to the nervous system.", expert: true },
+                { user: '@Neon_Ethics', time: '5H AGO', content: "The new Series on 'Digital Intimacy' just dropped. Let's start a sub-thread here for the first episode's discussion on ethical studio production.", expert: false },
+              ].map((post, idx) => (
+                <div key={idx} className={`p-6 rounded-xl border ${post.expert ? 'bg-primary/5 border-primary/20' : 'bg-surface-container border-white/5'}`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full ${post.expert ? 'bg-primary' : 'bg-zinc-800'} flex items-center justify-center font-bold text-black text-xs`}>
+                        {post.user[1]}
+                      </div>
+                      <div>
+                        <div className={`font-bold text-sm ${post.expert ? 'text-primary' : 'text-white'}`}>
+                          {post.user} {post.expert && <span className="ml-2 bg-primary/20 text-[8px] px-2 py-0.5 rounded-full">EXPERT</span>}
+                        </div>
+                        <div className="text-[10px] text-zinc-600 uppercase font-black">{post.time}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <p className={`text-sm leading-relaxed ${post.expert ? 'text-white italic' : 'text-on-surface-variant'}`}>{post.content}</p>
                 </div>
               ))}
             </div>

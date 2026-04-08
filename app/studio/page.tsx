@@ -10,7 +10,7 @@ export default function CreatorStudio() {
       <Header />
       <div className="flex pt-20">
         <Sidebar />
-        <main className="lg:ml-64 flex-1 pt-8 px-6 md:px-12 pb-20">
+        <main className="lg:ml-64 flex-1 pt-8 px-6 md:px-12 pb-32">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             <div className="col-span-1 md:col-span-2 bg-surface-container rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
               <div className="relative z-10">

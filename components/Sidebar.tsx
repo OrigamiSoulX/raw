@@ -28,9 +28,11 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-auto px-6">
-        <button className="w-full py-4 rounded-full bg-gradient-to-br from-primary to-secondary text-on-primary font-black tracking-widest text-xs shadow-[0_0_20px_rgba(255,124,245,0.3)] hover:scale-105 transition-transform">
-          GO PRO
-        </button>
+        <Link href="/studio">
+          <button className="w-full py-4 rounded-full bg-gradient-to-br from-primary to-secondary text-on-primary font-black tracking-widest text-xs shadow-[0_0_20px_rgba(255,124,245,0.3)] hover:scale-105 transition-transform uppercase">
+            GO PRO
+          </button>
+        </Link>
       </div>
     </aside>
   );
