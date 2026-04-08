@@ -5,45 +5,45 @@ export default function Sidebar() {
     {
       items: [
         { label: 'Home', href: '/', icon: 'home' },
-        { label: 'Trending', href: '/categories', icon: 'local_fire_department' },
-        { label: 'Library', href: '/profile', icon: 'video_library' },
+        { label: 'Trending', href: '/categories', icon: 'trending_up' },
+        { label: 'History', href: '/profile', icon: 'history' },
       ]
     },
     {
-      title: 'Ethical Cinema',
+      title: 'Explore',
       items: [
-        { label: 'Manifesto', href: '/manifesto', icon: 'auto_awesome' },
-        { label: 'Categories', href: '/categories', icon: 'grid_view' },
+        { label: 'Guidelines', href: '/manifesto', icon: 'verified_user' },
+        { label: 'Topics', href: '/categories', icon: 'dashboard' },
         { label: 'Community', href: '/community', icon: 'groups' },
       ]
     },
     {
       title: 'Creator',
       items: [
-        { label: 'Dashboard', href: '/studio', icon: 'dashboard' },
-        { label: 'Settings', href: '/settings/privacy', icon: 'settings' },
+        { label: 'Studio', href: '/studio', icon: 'analytics' },
+        { label: 'Privacy', href: '/settings/privacy', icon: 'shield_lock' },
       ]
     }
   ];
 
   return (
-    <aside className="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-white/5 bg-background hidden lg:flex flex-col py-6 px-4 z-40 overflow-y-auto no-scrollbar">
-      <div className="flex-1 space-y-8">
+    <aside className="fixed left-0 top-16 h-[calc(100vh-64px)] w-60 bg-white border-r border-gray-100 hidden lg:flex flex-col py-6 px-3 z-40 overflow-y-auto no-scrollbar">
+      <div className="flex-1 space-y-7">
         {sections.map((section, idx) => (
-          <div key={idx} className="space-y-2">
+          <div key={idx} className="space-y-1">
             {section.title && (
-              <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant/60 mb-3">
+              <h3 className="px-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2 opacity-50">
                 {section.title}
               </h3>
             )}
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {section.items.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex items-center gap-4 px-4 py-2.5 rounded-xl text-sm font-medium text-on-surface-variant hover:text-white hover:bg-surface-high transition-all group"
+                  className="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-semibold text-on-surface hover:text-primary hover:bg-primary/5 transition-all group"
                 >
-                  <span className="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-primary transition-colors">
                     {item.icon}
                   </span>
                   {item.label}
@@ -54,16 +54,15 @@ export default function Sidebar() {
         ))}
       </div>
 
-      <div className="mt-8 px-4">
-        <Link href="/studio" className="block p-4 rounded-2xl premium-gradient relative overflow-hidden group">
-           <div className="relative z-10">
-              <p className="text-black font-black text-xs uppercase tracking-widest mb-1">RAW Premium</p>
-              <p className="text-black/70 text-[10px] font-bold uppercase leading-tight mb-3">Unlock the Vault</p>
-              <button className="bg-black text-white text-[10px] font-black px-4 py-2 rounded-full uppercase transition-transform group-hover:scale-105">
-                Go Pro
+      <div className="mt-8 px-3">
+        <Link href="/studio" className="block p-4 rounded-2xl bg-primary/5 border border-primary/10 relative overflow-hidden group">
+           <div className="relative z-10 text-center">
+              <p className="text-primary font-bold text-xs mb-1 uppercase">Upgrade</p>
+              <p className="text-on-surface-variant text-[10px] leading-tight mb-3">Join our community of ethical creators.</p>
+              <button className="w-full bg-primary text-white text-[11px] font-bold py-2 rounded-lg transition-transform group-hover:scale-[1.02]">
+                Become Pro
               </button>
            </div>
-           <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/20 blur-2xl rounded-full transition-transform group-hover:scale-150" />
         </Link>
       </div>
     </aside>

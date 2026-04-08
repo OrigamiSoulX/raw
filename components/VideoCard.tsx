@@ -16,39 +16,24 @@ interface VideoCardProps {
 export default function VideoCard({
   id,
   title,
-  subtitle,
   imageUrl,
-  type = 'series',
-  episodes,
+  type = 'Transmission',
   duration,
-  rating,
   layout = 'standard'
 }: VideoCardProps) {
 
-  const layoutStyles = {
-    standard: "aspect-video",
-    vertical: "aspect-[9/16]",
-    wide: "md:col-span-2 aspect-[21/9]",
-    horizontal: "flex gap-4 items-start w-full"
-  };
-
   if (layout === 'horizontal') {
     return (
-      <Link href={`/watch/${id}`} className="group flex gap-4 items-start w-full transition-colors hover:bg-white/5 p-2 rounded-xl">
-        <div className="w-40 aspect-video flex-shrink-0 rounded-lg overflow-hidden relative">
+      <Link href={`/watch/${id}`} className="group flex gap-4 items-start w-full hover:bg-white hover:soft-shadow p-2 rounded-2xl transition-all duration-300">
+        <div className="w-36 aspect-video flex-shrink-0 rounded-xl overflow-hidden relative bg-gray-50 border border-gray-100">
           <Image fill src={imageUrl} alt={title} className="object-cover group-hover:scale-105 transition-transform duration-500" />
-          {duration && (
-            <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-bold text-white">
-              {duration}
-            </div>
-          )}
         </div>
-        <div className="flex-1 min-w-0">
-          <h4 className="text-sm font-bold text-white line-clamp-2 leading-tight mb-1">{title}</h4>
-          <div className="text-[11px] text-on-surface-variant flex items-center gap-2">
-             <span className="uppercase tracking-wider">{type}</span>
-             {rating && <span>•</span>}
-             {rating && <span className={rating === 'LOCKED' ? 'text-primary font-black' : ''}>{rating}</span>}
+        <div className="flex-1 min-w-0 pt-1">
+          <h4 className="text-sm font-bold text-on-background line-clamp-2 leading-tight mb-1 group-hover:text-primary transition-colors">{title}</h4>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{type}</span>
+            {duration && <span className="text-[10px] text-gray-300">•</span>}
+            {duration && <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{duration}</span>}
           </div>
         </div>
       </Link>
@@ -58,31 +43,35 @@ export default function VideoCard({
   return (
     <Link
       href={`/watch/${id}`}
-      className={`group flex flex-col gap-3 ${layout === 'wide' ? 'md:col-span-2' : ''}`}
+      className="group flex flex-col gap-4"
     >
-      <div className={`relative overflow-hidden rounded-xl bg-surface-high ${layoutStyles[layout === 'wide' ? 'wide' : layout === 'vertical' ? 'vertical' : 'standard']}`}>
+      <div className="relative aspect-video overflow-hidden rounded-[2rem] bg-gray-50 soft-shadow border-4 border-white transition-all duration-500 group-hover:-translate-y-1">
         <Image
           fill
           src={imageUrl}
           alt={title}
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
-
-        {episodes && (
-          <div className="absolute top-2 right-2 glass px-2 py-1 rounded text-[10px] font-black text-white uppercase tracking-tighter">
-            {episodes}
+        {duration && (
+          <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg text-[10px] font-bold text-on-background soft-shadow">
+            {duration}
           </div>
         )}
       </div>
 
-      <div className="flex flex-col gap-1 pr-2">
-        <h3 className="text-sm md:text-base font-bold text-white line-clamp-2 leading-tight transition-colors group-hover:text-primary">
+      <div className="flex flex-col gap-1.5 px-2">
+        <h3 className="text-base font-bold text-on-background line-clamp-2 leading-tight group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <p className="text-xs text-on-surface-variant uppercase tracking-widest font-medium">
-          {type} {subtitle && `• ${subtitle}`}
-        </p>
+        <div className="flex items-center gap-2">
+           <span className="text-[11px] text-on-surface-variant font-bold uppercase tracking-widest">
+             {type}
+           </span>
+           <div className="w-1 h-1 rounded-full bg-gray-200" />
+           <span className="text-[11px] text-on-surface-variant font-bold uppercase tracking-widest">
+             RAW Studio
+           </span>
+        </div>
       </div>
     </Link>
   );

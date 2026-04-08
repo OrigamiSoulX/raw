@@ -1,51 +1,36 @@
-# RAW - Cinema Etico & Educazione Umana
+# RAW CINEMA
 
-RAW è una piattaforma di video streaming d'avanguardia dedicata al cinema etico, alla decostruzione dello sguardo e all'educazione umana autentica. Il progetto si distingue per un sistema visivo duale che unisce l'estetica "Noir-Neon" (glassmorphism e luci vibranti) allo stile "70s Underground Zine" (tratti marcati, ombre nette e colori pop).
+A refined, ethical video streaming platform designed for a conscious community. RAW CINEMA focuses on high-quality storytelling, transparency, and a minimal, intuitive user experience.
 
-## 🚀 Caratteristiche Principali
+## Design Philosophy: Friendly Minimal
+Transitioning from a dark "Noir-Neon" aesthetic to a clean, light-themed experience, RAW CINEMA uses a "Friendly Minimal" palette:
+- **Primary Color:** Vibrant Blue/Teal (`#0070f3`)
+- **Backgrounds:** Clean White and soft Gray surfaces
+- **Typography:** Bold, tracking-tight headings with rounded UI elements (`3rem` corner radius)
 
-- **Cinema Etico**: Contenuti curati e verificati da esperti (sessuologi e accademici).
-- **Esperienza Duale**: Navigazione fluida tra un manifesto cinematografico e un hub di community interattivo.
-- **Privacy & Sicurezza**: Architettura protetta con intestazioni di sicurezza avanzate e gestione rigorosa dei dati.
-- **Creator Studio**: Strumenti per i creatori per monitorare l'impatto etico e la trasparenza finanziaria.
+## Key Features
+- **Age Gate:** Ensuring a safe entry for adult content.
+- **Transmissions Gallery:** A grid-based browsing experience with category filtering.
+- **Deep Categories:** Specialized tracks like "Real Connections", "Body Truths", and "Solo Rituals".
+- **Creator Studio:** A dedicated space for performers to manage assets and ethical vetting status.
+- **Community Hub:** A forum for deconstructing desire and discussing ethical production.
 
-## ⚖️ Termini di Utilizzo e Proprietà Intellettuale
+## Technology Stack
+- **Framework:** Next.js 15 (App Router)
+- **Library:** React 19
+- **Styling:** Tailwind CSS v4
+- **Icons:** Google Material Symbols (Outlined)
 
-**Tutti i diritti relativi a questo progetto (codice, design, concept, asset visivi e proprietà intellettuale) sono esclusivi dell'autore originale.**
-
-- **Uso Vietato**: Non è consentito utilizzare, copiare, distribuire o vendere questo progetto (o parti di esso) per scopi commerciali o personali senza l'espresso consenso scritto del proprietario.
-- **Collaborazione**: Sei invitato a proporre correzioni, miglioramenti e contributi tecnici per rendere RAW sempre migliore. Ogni contributo sarà valutato per l'integrazione nel nucleo principale del progetto.
-- **Filosofia**: RAW nasce come una ribellione contro gli standard industriali non etici; rispettare la proprietà di questo lavoro è il primo passo verso un ecosistema digitale più sano.
-
-## 🛠 Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **UI**: React 19 + Tailwind CSS v4
-- **Optimizzazione**: Sharp per l'elaborazione delle immagini
-- **Qualità**: ESLint (Flat Config) + TypeScript
-
-## 🔧 Installazione e Sviluppo
-
+## Development
+To run the development server:
 ```bash
-# Installa le dipendenze
-npm install
-
-# Avvia il server di sviluppo
 npm run dev
+```
 
-# Esegui il build per la produzione
+To build for production:
+```bash
 npm run build
 ```
 
-## 🛡️ Sicurezza
-
-Abbiamo implementato misure di sicurezza rigorose, inclusi:
-- Content Security Policy (CSP) restrittiva.
-- Protezione contro Clickjacking e XSS.
-- Headers HTTP per la prevenzione del MIME-sniffing.
-
-Per segnalare vulnerabilità, consulta il file `public/.well-known/security.txt`.
-
----
-
-© 2026 RAW CINEMA. Tutti i diritti riservati.
+## Legal & Rights
+This project and its associated designs are provided for implementation within the target repository. All rights to the "RAW" brand, concept, and deconstructed cinema philosophy are reserved by the project owners.

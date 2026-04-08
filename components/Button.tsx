@@ -14,20 +14,20 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = "rounded-full font-bold transition-all duration-300 active:scale-95 text-center flex items-center justify-center whitespace-nowrap";
+  const baseStyles = "rounded-xl font-semibold transition-all duration-200 active:scale-95 text-center flex items-center justify-center whitespace-nowrap";
 
   const variants = {
-    primary: "bg-primary text-black hover:opacity-90 shadow-lg shadow-primary/10",
-    secondary: "bg-surface-high text-white hover:bg-surface-highest border border-white/5",
-    outline: "border border-white/20 text-white hover:bg-white/5",
-    ghost: "text-zinc-400 hover:text-white transition-colors"
+    primary: "bg-primary text-white hover:bg-primary/90 soft-shadow",
+    secondary: "bg-gray-100 text-on-background hover:bg-gray-200",
+    outline: "border-2 border-primary/10 text-primary hover:bg-primary/5 hover:border-primary/30",
+    ghost: "text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-colors"
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-xs",
-    md: "px-6 py-3 text-sm",
-    lg: "px-8 py-4 text-base",
-    xl: "px-10 py-5 text-lg"
+    sm: "px-4 py-1.5 text-xs",
+    md: "px-6 py-2.5 text-sm",
+    lg: "px-8 py-3.5 text-base",
+    xl: "px-10 py-4.5 text-lg"
   };
 
   const widthStyles = fullWidth ? "w-full" : "";
